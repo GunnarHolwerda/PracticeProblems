@@ -1,4 +1,4 @@
-package googlepractice;
+package practiceproblems;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
