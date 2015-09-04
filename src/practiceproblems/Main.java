@@ -42,6 +42,8 @@ public class Main {
         else {
             System.out.println("String was balanced");
         }
+        
+        System.out.println(factorial(5));
     }
     
     public static String reverseString(String str) {
@@ -170,5 +172,14 @@ public class Main {
         }
         
         return stack.isEmpty();
+    }
+    
+    public static long factorial(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        else {
+            return n * factorial(n - 1);
+        }
     }
 }
