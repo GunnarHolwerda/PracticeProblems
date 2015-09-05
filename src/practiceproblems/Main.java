@@ -16,10 +16,11 @@ public class Main {
      */
     public static void main(String[] args) {
         //Reverse string question
-        String stringAnswer = reverseString("Where are you now?");
+        String stringAnswer = reverseString("Am I backwards yet?");
         System.out.println(stringAnswer);
    
         nthFibonacci(10);
+        System.out.println();
         
         printMultiplicationTable(12);
         
@@ -44,6 +45,9 @@ public class Main {
         }
         
         System.out.println(factorial(5));
+        
+        int[] coupleArray = {1, 2, 3, 4, 5, 99, 1, 2, 3, 4, 5};
+        System.out.println(findUncoupled(coupleArray));
     }
     
     public static String reverseString(String str) {
@@ -181,5 +185,13 @@ public class Main {
         else {
             return n * factorial(n - 1);
         }
+    }
+    
+    public static int findUncoupled(int[] list) {
+        int unpaired = 0;
+        for (int i : list)
+            unpaired ^= i;
+        
+        return unpaired;
     }
 }
