@@ -3,6 +3,7 @@ package practiceproblems;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Stack;
 
 /**
@@ -48,6 +49,9 @@ public class Main {
         
         int[] coupleArray = {1, 2, 3, 4, 5, 99, 1, 2, 3, 4, 5};
         System.out.println(findUncoupled(coupleArray));
+        
+        int[] targetSumArray = {1, 2, 3, 4, 5, 1, 2, 3, 4, 5};
+        targetSum(targetSumArray, 10);
     }
     
     public static String reverseString(String str) {
@@ -193,5 +197,29 @@ public class Main {
             unpaired ^= i;
         
         return unpaired;
+    }
+    
+    public static void targetSum(int[] numbers, int sum) {
+        // Sort the array
+        Arrays.sort(numbers);
+        
+        int start = 0;
+        int end = numbers.length - 1;
+        
+        while (start < end) {
+            int currentSum = numbers[start] + numbers[end];
+            
+            if (currentSum == sum) {
+                System.out.println(numbers[start] + ", " + numbers[end]);
+                return;
+            }
+            else if (currentSum < sum) {
+                start++;
+            }
+            else {
+                end--;
+            }
+        }
+        System.out.println("No integers found to total: " + sum);
     }
 }
