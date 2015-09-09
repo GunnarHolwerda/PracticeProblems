@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Stack;
 
 /**
@@ -52,6 +53,12 @@ public class Main {
         
         int[] targetSumArray = {1, 2, 3, 4, 5, 1, 2, 3, 4, 5};
         targetSum(targetSumArray, 10);
+        
+        Node testList = new Node(1, new Node(2, new Node(3)));
+        printLinkedList(testList);
+        testList = reverseLinkedList(testList);
+        System.out.println();
+        printLinkedList(testList);
     }
     
     public static String reverseString(String str) {
@@ -221,5 +228,29 @@ public class Main {
             }
         }
         System.out.println("No integers found to total: " + sum);
+    }
+    
+    public static Node reverseLinkedList(Node root) {
+       Node reversedPart = null;
+       Node current = root;
+       while (current != null) {
+           // Break off rest of list
+           Node restOfList = current.getNext();
+           // Set the next of the current node to the reversed LinkedList
+           current.setNext(reversedPart);
+           // The reversed Linked list is now started with the current node
+           reversedPart = current;
+           // Start over with the rest of the list
+           current = restOfList;
+       }
+       root = reversedPart;
+       return root;
+    }
+    
+    public static void printLinkedList(Node root) {
+        while (root != null) {
+            System.out.print(root.getValue() + ", ");
+            root = root.getNext();
+        }
     }
 }
