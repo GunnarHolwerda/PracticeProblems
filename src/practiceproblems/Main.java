@@ -60,10 +60,12 @@ public class Main {
         testList = reverseLinkedList(testList);
         System.out.println();
         printLinkedList(testList);
+        System.out.println();
         
         int[] sortArray = {7, 12, 3, 4, 19, 1, 53, 8, 6, 5};
         MergeSort ms = new MergeSort();
-        ms.sort(numArray);
+        printArray(sortArray);
+        ms.sort(sortArray);
         printArray(sortArray);
     }
     

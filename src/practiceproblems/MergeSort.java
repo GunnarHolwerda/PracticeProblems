@@ -21,20 +21,23 @@ public class MergeSort {
         
     }
     
-    public void mergeSort(int startIndex, int lastIndex) {
-        int middle = 0;
-        if (startIndex < lastIndex) {
-            middle = startIndex + (lastIndex - startIndex)/2;
-            mergeSort(startIndex, middle);
-            mergeSort(middle + 1, lastIndex);
-            mergeLists(startIndex, middle, lastIndex);
+    private void mergeSort(int lowerIndex, int higherIndex) {
+        if (lowerIndex < higherIndex) {
+            int middle = lowerIndex + (higherIndex - lowerIndex)/2;
+            // Break out front of list
+            mergeSort(lowerIndex, middle);
+            // Break out end of list
+            mergeSort(middle + 1, higherIndex);
+            //Merge the two current lists together
+            mergeLists(lowerIndex, middle, higherIndex);
         }
     }
     
     public void mergeLists(int start, int middle, int last) {
-        for (int i = start; i < last; i++) {
+        for (int i = start; i <= last; i++) {
             this.tempMergeArray[i] = this.array[i];
         }
+        
         int i = start;
         int j = middle + 1;
         int k = start;
