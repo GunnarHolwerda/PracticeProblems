@@ -67,6 +67,9 @@ public class Main {
         printArray(sortArray);
         ms.sort(sortArray);
         printArray(sortArray);
+        
+        int[] addArray = {9, 9, 9, 9};
+        printArray(addOneToIntegerArray(addArray));
     }
     
     public static String reverseString(String str) {
@@ -260,5 +263,32 @@ public class Main {
             System.out.print(root.getValue() + ", ");
             root = root.getNext();
         }
+    }
+    
+    public static int[] addOneToIntegerArray(int[] array) {
+        boolean increaseArraySize = false;
+        for (int i = array.length - 1; i >= 0; i--) {
+            if (array[i] < 9) {
+                array[i] += 1;
+                return array;
+            }
+            else {
+                // We have to carry down the array and set current to 0
+                array[i] = 0;
+                if (i == 0) {
+                    increaseArraySize = true;
+                }
+            }
+        }
+        
+        if (increaseArraySize) {
+            int[] newArray = new int[array.length + 1];
+            newArray[0] = 1;
+            for (int i = 0; i < array.length; i++) {
+                newArray[i + 1] = array[i];
+            }
+            array = newArray;
+        }
+        return array;
     }
 }

@@ -38,13 +38,13 @@ public class MergeSort {
             this.tempMergeArray[i] = this.array[i];
         }
         
-        int i = start;
+        int curMergePosition = start;
         int j = middle + 1;
         int k = start;
-        while (i <= middle && j <= last) {
-            if (this.tempMergeArray[i] <= this.tempMergeArray[j]) {
-                this.array[k] = this.tempMergeArray[i];
-                i++;
+        while (curMergePosition <= middle && j <= last) {
+            if (this.tempMergeArray[curMergePosition] <= this.tempMergeArray[j]) {
+                this.array[k] = this.tempMergeArray[curMergePosition];
+                curMergePosition++;
             }
             else {
                 this.array[k] = this.tempMergeArray[j];
@@ -52,10 +52,10 @@ public class MergeSort {
             }
             k++;
         }
-        while (i <= middle) {
-            array[k] = tempMergeArray[i];
+        while (curMergePosition <= middle) {
+            array[k] = tempMergeArray[curMergePosition];
             k++;
-            i++;
+            curMergePosition++;
         }
         
     }
